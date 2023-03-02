@@ -5,10 +5,16 @@ import (
 	"strings"
 )
 
-// Golang is a struct that represents a Go code generator.
+// Golang represents a Golang code generator that extends the Builder struct.
 type Golang struct {
+	// packageName is a string that represents the name of
+	// the Go package being generated.
 	packageName string
-	imports     []string
+	// imports is a slice of strings that contains
+	// the imports required for the generated Go code.
+	imports []string
+	// Builder is an embedded struct that represents
+	// the base builder for generating the Go code.
 	*Builder
 }
 

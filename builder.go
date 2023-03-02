@@ -6,9 +6,15 @@ import (
 	"strings"
 )
 
+// Builder is the base builder of the strlang package
 type Builder struct {
-	builder    *strings.Builder
+	// builder that contains a string builder.
+	builder *strings.Builder
+	// currIndent is the current indentation level,
+	// current indentation start at 0.
 	currIndent int
+	// indentChar represent the indentation character,
+	// default indent character is `\t`.
 	indentChar string
 }
 
