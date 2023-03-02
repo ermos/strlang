@@ -1,4 +1,5 @@
-// Package strlang provides a string builder with indentation support.
+// Package strlang provides a string builder with indentation support,
+// it allows you to generate code using a fluent string builder interface.
 package strlang
 
 import (
