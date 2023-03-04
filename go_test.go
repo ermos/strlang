@@ -66,8 +66,8 @@ func TestGolang_AddImports(t *testing.T) {
 
 		expected := "" +
 			"import (\n" +
-			"  \"fmt\"\n" +
-			"  \"strings\"\n" +
+			" \"fmt\"\n" +
+			" \"strings\"\n" +
 			")\n\n"
 
 		return t, expected, b.String()

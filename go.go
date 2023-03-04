@@ -97,6 +97,9 @@ func (b *Golang) StructField(name, goType string, docs ...map[string]string) {
 func (b *Golang) String() string {
 	sb := NewBuilder()
 
+	sb.SetIndentChar(b.indentChar)
+	sb.StripIndent(b.currIndent)
+
 	sb.WriteStringln(fmt.Sprintf("package %s", b.packageName), 2)
 
 	if len(b.imports) != 0 {
