@@ -31,7 +31,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TEST_REPORTER_ID }}
         with:
-          coverageCommand: gocov convert coverage.out
+          coverageLocations: coverage.json:gocov
           debug: false
 
       - name: Cleanup
