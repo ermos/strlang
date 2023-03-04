@@ -9,7 +9,7 @@ in different programming languages.
 [![Go Version](https://img.shields.io/github/go-mod/go-version/ermos/strlang?label=version)](https://github.com/ermos/strlang/blob/main/go.mod)
 [![Latest tag](https://img.shields.io/github/v/tag/ermos/strlang)](https://github.com/ermos/strlang/tags)
 [![Go Report Card](https://goreportcard.com/badge/github.com/ermos/strlang)](https://goreportcard.com/report/github.com/ermos/strlang)
-[![Go Coverage](https://github.com/ermos/strlang/wiki/coverage.svg)](https://raw.githack.com/wiki/ermos/strlang/coverage.html)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4d4e0548b083618eba7d/maintainability)](https://codeclimate.com/github/ermos/strlang/maintainability)
 
 ## 🛠️ Installation
 
