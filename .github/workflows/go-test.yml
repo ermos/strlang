@@ -30,9 +30,11 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TEST_REPORTER_ID }}
         with:
-          coverageCommand: gocov convert coverage.out | codeclimate analyze-coverage --input=- --language=go
+          coverageCommand: gocov convert coverage.out > coverage.json
+          coverageLocations: coverage.json:gocov
           debug: false
 
       - name: Cleanup
         run: |
           rm -f coverage.out
+          rm -f coverage.json
