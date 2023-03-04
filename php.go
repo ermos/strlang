@@ -55,6 +55,9 @@ func (b *PHP) ClassFunc(modifiers, name, parameters, output string, inside func(
 func (b *PHP) String() string {
 	sb := NewBuilder()
 
+	sb.SetIndentChar(b.indentChar)
+	sb.StripIndent(b.currIndent)
+
 	sb.WriteStringln("<?php", 2)
 
 	if b.namespace != "" {
