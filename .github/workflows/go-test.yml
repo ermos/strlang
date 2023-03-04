@@ -21,6 +21,10 @@ jobs:
       - name: Install gocov
         run: go install github.com/axw/gocov/gocov@latest
 
+      - name: Run tests and coverage
+        run: |
+          go test -race -coverprofile=coverage.out ./...
+
       - name: Upload coverage to CodeClimate
         uses: paambaati/codeclimate-action@v3.2.0
         env:
