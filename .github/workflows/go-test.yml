@@ -1,21 +1,41 @@
-name: Go
-on: [push]
+name: Test and Coverage Report
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  test-and-report:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Go
-        uses: actions/setup-go@v3
+      - uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.20
+
       - name: Install dependencies
-        run: go mod tidy
-      - name: Test
-        run: go test -v ./...
-      - name: Update coverage report
-        uses: ncruces/go-coverage-report@main
-        if: |
-          matrix.os == 'ubuntu-latest' &&
-          github.event_name == 'push'
-        continue-on-error: true
+        run: go mod download
+
+      - name: Run tests and coverage
+        run: |
+          go test -race -coverprofile=coverage.out ./...
+          go tool cover -func=coverage.out -o coverage.txt
+
+      - name: Upload coverage to CodeClimate
+        uses: codeclimate/test-reporter-action@v2
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TEST_REPORTER_ID }}
+        with:
+          name: Test Coverage Report
+          coverageCommand: go tool cover -json=coverage.out | codeclimate analyze-coverage --input=- --language=go
+          verbose: true
+          debug: false
+
+      - name: Cleanup
+        run: |
+          rm -f coverage.out
+          rm -f coverage.txt
