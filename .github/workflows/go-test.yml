@@ -2,8 +2,9 @@ name: Test and Coverage Report
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   test-and-report:
@@ -26,7 +27,7 @@ jobs:
           go tool cover -func=coverage.out -o coverage.txt
 
       - name: Upload coverage to CodeClimate
-        uses: codeclimate/test-reporter-action@v2
+        uses: paambaati/codeclimate-action@v3.2.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TEST_REPORTER_ID }}
         with:
