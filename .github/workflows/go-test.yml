@@ -21,17 +21,15 @@ jobs:
       - name: Run tests and coverage
         run: |
           go test -race -coverprofile=coverage.out ./...
-          go tool cover -func=coverage.out -o coverage.txt
 
       - name: Upload coverage to CodeClimate
         uses: paambaati/codeclimate-action@v3.2.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TEST_REPORTER_ID }}
         with:
-          coverageCommand: go tool cover -json=coverage.out | codeclimate analyze-coverage --input=- --language=go
+          coverageCommand: codeclimate analyze-coverage --input=coverage.out --language=go
           debug: false
 
       - name: Cleanup
         run: |
           rm -f coverage.out
-          rm -f coverage.txt
