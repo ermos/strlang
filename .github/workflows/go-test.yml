@@ -18,16 +18,15 @@ jobs:
         with:
           go-version: 1.20.1
 
-      - name: Run tests and coverage
-        run: |
-          go test -race -coverprofile=coverage.out ./...
+      - name: Install gocov
+        run: go install github.com/axw/gocov/gocov@latest
 
       - name: Upload coverage to CodeClimate
         uses: paambaati/codeclimate-action@v3.2.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TEST_REPORTER_ID }}
         with:
-          coverageLocations: coverage.out:gocov
+          coverageCommand: gocov convert coverage.out | codeclimate analyze-coverage --input=- --language=go
           debug: false
 
       - name: Cleanup
