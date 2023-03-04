@@ -1,36 +1,21 @@
-name: Test and Coverage Report
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+name: Go
+on: [push]
 
 jobs:
-  test-and-report:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Set up Go
+      - name: Setup Go
         uses: actions/setup-go@v3
-        with:
-          go-version: 1.20.1
-
-      - name: Run tests and coverage
-        run: |
-          go test -race -coverprofile=coverage.out ./...
-
-      - name: Upload coverage to CodeClimate
-        uses: paambaati/codeclimate-action@v3.2.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TEST_REPORTER_ID }}
-        with:
-          coverageLocations: coverage.out:gocov
-          debug: false
-
-      - name: Cleanup
-        run: |
-          rm -f coverage.out
-          rm -f coverage.json
+      - name: Install dependencies
+        run: go mod tidy
+      - name: Test
+        run: go test -v ./...
+      - name: Update coverage report
+        uses: ncruces/go-coverage-report@main
+        if: |
+          matrix.os == 'ubuntu-latest' &&
+          github.event_name == 'push'
+        continue-on-error: true
