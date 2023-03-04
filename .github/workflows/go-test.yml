@@ -28,9 +28,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TEST_REPORTER_ID }}
         with:
-          name: Test Coverage Report
           coverageCommand: go tool cover -json=coverage.out | codeclimate analyze-coverage --input=- --language=go
-          verbose: true
           debug: false
 
       - name: Cleanup
