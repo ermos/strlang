@@ -6,11 +6,10 @@ It provides a simple way to generate strings of code that can be used
 in different programming languages.
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/ermos/strlang.svg)](https://pkg.go.dev/github.com/ermos/strlang)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/ermos/strlang?label=version)](https://github.com/ermos/strlang/blob/main/go.mod)
-[![Latest tag](https://img.shields.io/github/v/tag/ermos/strlang)](https://github.com/ermos/strlang/tags)
+[![Latest tag](https://img.shields.io/github/v/tag/ermos/strlang?label=latest)](https://github.com/ermos/strlang/tags)
 [![Go Report Card](https://goreportcard.com/badge/github.com/ermos/strlang)](https://goreportcard.com/report/github.com/ermos/strlang)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4d4e0548b083618eba7d/maintainability)](https://codeclimate.com/github/ermos/strlang/maintainability)
-
+[![codecov](https://codecov.io/github/ermos/strlang/branch/main/graph/badge.svg?token=52FCLZVA0B)](https://codecov.io/github/ermos/strlang)
 ## 🛠️ Installation
 
 To use `strlang` in your Go project, you need to have Go installed on your system.
